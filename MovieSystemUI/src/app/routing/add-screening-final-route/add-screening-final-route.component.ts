@@ -4,7 +4,7 @@ import { MovieForAddScreeningComponent } from '../../components/add-screening-us
 import { CommonModule } from '@angular/common';
 import { Movie } from '../../../api-services/models/movie.type';
 import { Room } from '../../../api-services/models/room.type';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../../api-services/movie.service';
 import { RoomService } from '../../../api-services/room.service';
 import { ScreeningService } from '../../../api-services/screening.service';
@@ -41,7 +41,8 @@ export class AddScreeningFinalRouteComponent {
     private movieService: MovieService,
     private roomService: RoomService,
     private screeningService: ScreeningService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.screeningForm = this.fb.group({
       screeningTime: ['', Validators.required],
@@ -87,15 +88,17 @@ export class AddScreeningFinalRouteComponent {
 
   onSubmit() {
     const val = this.screeningForm.value;
+
     let startDateTime = '';
-    if (this.selectedDate() && val.screeningTime) {
-      // Combine date and time into a single Date object
-      const [hours, minutes] = val.screeningTime.split(':').map(Number);
+    let date = this.selectedDate();
+    let time = val.screeningTime;
+    if (date && time) {
+      const [hours, minutes] = time.split(':').map(Number);
+      const combined = new Date(date);
+      combined.setHours(hours, minutes, 0, 0);
 
-      this.selectedDate()!.setHours(hours, minutes, 0, 0);
-
-      // Format as ISO string without milliseconds (for .NET compatibility)
-      startDateTime = this.selectedDate()!.toISOString().slice(0, 19);
+      // Convert to ISO string with timezone (UTC)
+      startDateTime = combined.toISOString(); // e.g., "2024-06-12T14:30:00.000Z"
     }
     const screeningDto: AddScreeningDto = {
       movieId: this.movie()?.movieId || 0,
@@ -107,7 +110,7 @@ export class AddScreeningFinalRouteComponent {
     this.screeningService.createScreening(screeningDto).subscribe({
       next: (screening) => {
         console.log('Screening created successfully:', screening);
-
+        this.router.navigate(['/screening', screening.screeningId]); // Navigate to details page
       },
       error: (err) => {
         console.error('Error creating screening:', err);
