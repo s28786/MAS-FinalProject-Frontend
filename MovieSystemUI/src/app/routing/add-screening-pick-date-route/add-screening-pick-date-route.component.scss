@@ -1,0 +1,31 @@
+.dates-showcase{
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.date-item{
+  text-align: center;
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.add-screening-main{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1rem 1rem 0 1rem;
+  gap: 1rem;
+
+}
+.picked-items{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: max-content;
+}

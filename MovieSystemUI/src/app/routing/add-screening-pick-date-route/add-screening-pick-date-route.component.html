@@ -1,0 +1,22 @@
+<div class="add-screening-main">
+  <h3>Picked items</h3>
+  <div class="picked-items">
+    @if (movie() !== null) {
+    <app-movie-for-add-screening [movie]="movie()!"></app-movie-for-add-screening>
+    } @else {
+    <h2>Movie not found</h2> }
+    @if (room() !== null) {
+    <app-room-for-add-screening [room]="room()!" [movieId]="movie()?.movieId!" [pickable]="false"></app-room-for-add-screening>
+    } @else {
+    <h2>Room not found</h2> }
+  </div>
+  <h3>Pick a date</h3>
+  <div class="dates-showcase">
+    @for (date of dates() ; track date) {
+       <div class="date-item">
+          <p>{{date |  date: 'dd/MM/yyyy' }}</p>
+          <button class="btn btn-dark" (click)="pickDate(date)">Pick this date</button>
+       </div>
+    }
+  </div>
+</div>

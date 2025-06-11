@@ -1,0 +1,24 @@
+<div class="movies-showcase-body">
+  <h3>Adult movies</h3>
+  @if (!movies().length) {
+  <div>
+    <span>Loading...</span>
+  </div>
+  }
+
+  <div class="movies-showcase">
+    @for (movie of movies() ; track movie.movieId) {
+      @if (movie.movieType === "movie_adult") {
+        <app-movie-detail [movie]="movie"></app-movie-detail>
+      }
+    }
+  </div>
+  <h3>Children movies</h3>
+  <div class="movies-showcase">
+    @for (movie of movies() ; track movie.movieId) {
+    @if (movie.movieType === "movie_children") {
+    <app-movie-detail [movie]="movie"></app-movie-detail>
+    }
+    }
+  </div>
+</div>

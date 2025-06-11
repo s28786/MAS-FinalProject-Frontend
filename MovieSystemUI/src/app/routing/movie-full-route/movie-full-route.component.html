@@ -1,0 +1,18 @@
+<div class="movies-showcase-body">
+  <h3>Movie</h3>
+  @if (movie() !== null) {
+  <app-movie-full [movie]="movie()!"></app-movie-full>
+  } @else {
+  <h2>Course not found</h2> }
+
+  <h3>Screenings Associated</h3>
+  <div class="screenings-showcase">
+    @if (screenings().length) {
+    @for (screening of screenings() ; track screening.screeningId) {
+    <app-screening-detail [screening]="screening"></app-screening-detail>
+    }
+    } @else {
+    <span>No screenings associated with this movie</span>
+    }
+  </div>
+</div>

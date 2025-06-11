@@ -1,0 +1,15 @@
+<div class="rooms-showcase-body">
+  <h3>Rooms</h3>
+  @if (!rooms().length) {
+  <div>
+    <span>Loading...</span>
+  </div>
+  }
+
+  <div class="rooms-showcase">
+    @for (room of rooms() ; track room.roomId) {
+    <app-room-detail [room]="room"></app-room-detail>
+    }
+  </div>
+
+</div>

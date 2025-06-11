@@ -1,0 +1,16 @@
+<div class="add-screening-main">
+  <h3>Picked items</h3>
+  <div class="picked-items">
+    @if (movie() !== null) {
+    <app-movie-for-add-screening [movie]="movie()!"></app-movie-for-add-screening>
+    } @else {
+    <h2>Movie not found</h2> }
+
+  </div>
+  <h3>Pick a room</h3>
+  <div class="rooms-showcase">
+    @for (room of rooms() ; track room.roomId) {
+    <app-room-for-add-screening [room]="room" [movieId]="movie()?.movieId!"></app-room-for-add-screening>
+    }
+  </div>
+</div>

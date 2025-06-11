@@ -1,0 +1,20 @@
+<div class="card">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">{{ screening().startDateTime | date: 'dd/MM/yyyy' }}</h5>
+
+    <p class="card-text">Time: {{ screening().startDateTime | date: 'h:mm a' }} - {{ screening().endDateTime | date: 'h:mm a' }}</p>
+
+     @if (isScreeningRoute) {
+      <p class="card-text">Movie: {{ screening().movieTitle }}</p>
+     }
+    <p class="card-text">Room: {{ screening().roomNumber }}</p>
+
+    <p class="card-text">Degault ticket price: {{screening().defaultTicketPrice}}</p>
+
+
+    <a class="btn btn-outline-dark " (click)="goToDetails(screening().screeningId)" routerLinkActive="router-link-active">Check
+    </a>
+
+  </div>
+</div>

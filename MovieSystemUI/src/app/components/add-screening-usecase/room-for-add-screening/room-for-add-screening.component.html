@@ -1,0 +1,33 @@
+<div class="card">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">{{ room().roomNumber }}</h5>
+    @switch (room().roomType) {
+
+    @case ('room_2d') {
+    <p class="card-text">Type: 2D</p>
+
+    }
+    @case ('room_dolby') {
+    <p class="card-text">Type: Dolby</p>
+
+    }
+    @case('room_imax'){
+    <p class="card-text">Type: IMAX</p>
+
+    }
+    @default {
+    <p class="card-text">No detail</p>
+
+    }
+    }
+    <p class="card-text">Number of seat: {{ room().numberOfSeat }}</p>
+    <p class="card-text">Seat per row: {{ room().seatPerRow }}</p>
+
+    @if(pickable()){
+      <a class="btn btn-outline-dark " (click)="nextStep(room().roomId)" routerLinkActive="router-link-active">Pick
+        </a>
+    }
+
+  </div>
+</div>

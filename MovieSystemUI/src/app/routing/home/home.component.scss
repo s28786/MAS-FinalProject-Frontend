@@ -1,0 +1,27 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .home{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .home{
+    *{
+      display: block;
+    }
+    h2{
+      text-decoration: underline;
+    }
+    img{
+      width: 10rem;
+      height: auto;
+
+    }
+  }

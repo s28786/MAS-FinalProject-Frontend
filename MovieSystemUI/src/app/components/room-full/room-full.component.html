@@ -1,0 +1,32 @@
+<div class="card">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">{{ room().roomNumber }}</h5>
+    <p class="card-text">Number of seat: {{ room().numberOfSeat }}</p>
+    <p class="card-text">Seat per row: {{ room().seatPerRow }}</p>
+
+    @switch (room().roomType) {
+
+      @case ('room_2d') {
+        <p class="card-text">Type: 2D</p>
+        <p class="card-text">Projection type: {{room().projectionType}}</p>
+        break;
+      }
+      @case ('room_dolby') {
+        <p class="card-text">Type: Dolby</p>
+        <p class="card-text">Vibrating seat: {{room().vibratingSeats}}</p>
+      }
+      @case('room_imax'){
+        <p class="card-text">Type: IMAX</p>
+        <p class="card-text">Screen: {{room().screenWidth}} x {{room().screenHeight}}</p>
+
+      }
+      @default {
+        <p class="card-text">No detail</p>
+
+      }
+    }
+
+  </div>
+</div>
+

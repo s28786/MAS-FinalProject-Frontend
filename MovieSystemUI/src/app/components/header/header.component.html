@@ -1,0 +1,40 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" routerLink="/"><img src="/assets/logo-white.svg" alt="Platform Logo" width="30"
+        height="30" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <li class="nav-item" routerLinkActive="text-secondary" [routerLinkActiveOptions]="{ exact: false }">
+          <a class="nav-link" routerLink="/movie">Movies</a>
+        </li>
+        <li class="nav-item" routerLinkActive="text-secondary" [routerLinkActiveOptions]="{ exact: false }">
+          <a class="nav-link" routerLink="/screening">Screenings</a>
+        </li>
+        <li class="nav-item" routerLinkActive="text-secondary" [routerLinkActiveOptions]="{ exact: false }">
+          <a class="nav-link" routerLink="/room">Rooms</a>
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div class="d-flex align-items-center ms-auto employee-info">
+      <img src="/assets/user-solid.svg" alt="User Icon" width="36" height="36" class="me-2" />
+      <div class="d-flex flex-column text-center">
+        <span>Iga Lewandowska</span>
+        <span>Screening Employee</span>
+      </div>
+    </div>
+    <!-- <a class="btn btn-outline-light my-2 my-sm-0" href="#"  ></a>
+    <a class="btn btn-outline-light my-2 my-sm-0"  href="#">Screening Employee</a> -->
+
+
+  </nav>
+</header>

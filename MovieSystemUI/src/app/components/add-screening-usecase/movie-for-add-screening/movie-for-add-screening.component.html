@@ -1,0 +1,23 @@
+<div class="card">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">{{ movie().title }}</h5>
+
+
+    <p class="card-text">Released date: {{ movie().releaseDate | date: 'dd/MM/yyyy' }}</p>
+    <p class="card-text">Genre:
+      <span *ngFor="let genre of movie().genres; let last = last">
+        {{ genre.name }}<span *ngIf="!last">, </span>
+      </span>
+    </p>
+    <p class="card-text">Duration: {{movie().duration}}</p>
+
+    <p class="card-text">Min age: {{movie().minimumAge}}</p>
+    @if (movie().alcoholAllowed) {
+    <p class="card-text">Alcolols allowed: {{movie().alcoholAllowed}}</p>
+    } @else {
+    <p class="card-text">Snacks allowed: {{movie().snackAllowed}}</p>
+    }
+
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="card">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">{{ screening().startDateTime | date: 'dd/MM/yyyy' }}</h5>
+    <p class="card-text">Time: {{ screening().startDateTime | date: 'h:mm a' }} - {{ screening().endDateTime | date:
+      'h:mm a' }}</p>
+    <p class="card-text">Default ticket price: {{screening().defaultTicketPrice}}</p>
+  </div>
+</div>

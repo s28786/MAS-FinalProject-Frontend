@@ -1,0 +1,28 @@
+<div class="screening-showcase-body">
+
+  @if (screening() == null) {
+  <h2>Screening not found</h2>}
+  @else {
+  <div class="screening-showcase">
+    <h3>Screening</h3>
+    <app-screening-full [screening]="screening()!"></app-screening-full>
+  </div>
+
+  <h3>Movie Associated</h3>
+  <div class="movie-showcase">
+    @if (movie() !== null) {
+    <app-movie-detail [movie]="movie()!"></app-movie-detail>
+    } @else {
+    <h2>Movie not found</h2>
+    }
+  </div>
+  <h3>Screenings Associated</h3>
+  <div class="room-showcase">
+    @if(room() != null){
+    <app-room-detail [room]="room()!"></app-room-detail>
+    } @else {
+    <h2>Room not found</h2>
+    }
+  </div>
+  }
+</div>

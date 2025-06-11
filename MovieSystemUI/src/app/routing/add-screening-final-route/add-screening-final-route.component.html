@@ -1,0 +1,77 @@
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <div class="add-screening-main">
+        <h3>Picked items</h3>
+        <div class="picked-items">
+          @if (movie() !== null) {
+          <app-movie-for-add-screening [movie]="movie()!"></app-movie-for-add-screening>
+          } @else {
+          <h2>Movie not found</h2> }
+          @if (room() !== null) {
+          <app-room-for-add-screening [room]="room()!" [movieId]="movie()?.movieId!"
+            [pickable]="false"></app-room-for-add-screening>
+          } @else {
+          <h2>Room not found</h2> }
+
+          <div class="date-item">
+            <p>{{selectedDate() | date: 'dd/MM/yyyy' }}</p>
+          </div>
+        </div></div>
+    </div>
+    <div class="col">
+      <h3>Add a screening</h3>
+      <!-- Example: add-screening-final-route.component.html or similar -->
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="screeningForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group row">
+              <label for="screeningTime" class="col-sm-4 col-form-label">Screening Time</label>
+              <div class="col-sm-8">
+                <input id="screeningTime" type="time" class="form-control" formControlName="screeningTime">
+              </div>
+              <div
+                *ngIf="screeningForm.controls['screeningTime'].invalid && (screeningForm.controls['screeningTime'].touched || screeningForm.controls['screeningTime'].dirty)"
+                class="alert alert-danger">
+                <div *ngIf="screeningForm.controls['screeningTime'].errors?.['required']">Time is required</div>
+              </div>
+            </div>
+
+            <div class="form-group row mt-3">
+              <label for="defaultPrice" class="col-sm-4 col-form-label">Default Price</label>
+              <div class="col-sm-8">
+                <input id="defaultPrice" type="number" class="form-control" formControlName="defaultPrice" min="1">
+              </div>
+              <div
+                *ngIf="screeningForm.controls['defaultPrice'].invalid && (screeningForm.controls['defaultPrice'].touched || screeningForm.controls['defaultPrice'].dirty)"
+                class="alert alert-danger">
+                <div *ngIf="screeningForm.controls['defaultPrice'].errors?.['required']">Default price is required</div>
+                <div *ngIf="screeningForm.controls['defaultPrice'].errors?.['min']">At least 35 for default price required</div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-dark mt-4" [disabled]="!screeningForm.valid">Add Screening</button>
+          </form>
+          <div *ngIf="serverErrors().length != 0" class="alert alert-danger server-errors mt-3">
+            @for (item of serverErrors(); track $index) {
+            <div [textContent]="item"></div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="occupied-date">
+        @for (screening of screenings(); track $index) {
+        <div class="date-item">
+          <p>{{screening.startDateTime | date: 'dd/MM/yyyy' }} - {{screening.startDateTime | date: 'h:mm a' }}</p>
+
+        </div>
+        }
+
+      </div>
+    </div>
+  </div>
+</div>

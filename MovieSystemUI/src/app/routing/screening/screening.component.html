@@ -1,0 +1,15 @@
+<div class="screenings-showcase-body">
+  <h3>Screenings</h3>
+  @if (!screenings().length) {
+  <div>
+    <span>Loading...</span>
+  </div>
+  }
+
+  <div class="screenings-showcase">
+    @for (screening of screenings() ; track screening.screeningId) {
+      <app-screening-detail [screening]="screening"></app-screening-detail>
+    }
+  </div>
+
+</div>

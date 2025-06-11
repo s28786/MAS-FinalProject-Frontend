@@ -1,0 +1,19 @@
+.screening-showcase-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1rem 1rem 0 1rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+screening-showcase, movie-showcase, room-showcase {
+  align-self: center;
+}
+
+
+h3 {
+
+  text-align: center;
+}

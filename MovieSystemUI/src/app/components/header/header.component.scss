@@ -1,0 +1,18 @@
+.navbar-brand {
+  margin-left: 1rem;
+}
+
+.employee-info {
+  margin-right: 1rem;
+}
+
+//grey out and disable active links
+.active-link {
+  color: gray;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+* {
+  color: white;
+}
